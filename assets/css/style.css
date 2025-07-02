@@ -83,8 +83,13 @@ label i {
   .welcome-section {
     height: auto !important;
   }
+  .main-section{
+   margin-top: 58px !important;
 }
-
+}
+.main-section{
+   margin-top: 73px;
+}
 .welcome-section {
   height: 100vh;
   display: flex;
@@ -125,7 +130,7 @@ footer a.text-white:hover {
   width: 100%;
   max-width: 100%;
   overflow: hidden;
-  margin-top: 60px;
+  
 }
 
 .panchayat_section1 img {

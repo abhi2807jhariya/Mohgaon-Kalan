@@ -1,8 +1,8 @@
-const apiKey = "439d4b804bc8187953eb36d2a8c26a02"; // OpenWeather demo key
+const apiKey = "047bd43711b52616e1c13f1901f54ce2";
 const lat = 22.647735;
 const lon = 79.597123;
 
-fetch(`https://corsproxy.io/?https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=hi`)
+fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=hi`)
   .then(response => {
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
