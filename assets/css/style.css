@@ -87,6 +87,11 @@ label i {
    margin-top: 58px !important;
 }
 }
+@media screen and (max-width: 850px) {
+  .welcome-section {
+    height: 50vh !important;
+  }
+}
 .main-section{
    margin-top: 73px;
 }
