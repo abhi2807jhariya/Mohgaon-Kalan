@@ -1,0 +1,162 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: sans-serif;
+  padding: 15px;
+  background: linear-gradient(to bottom, #1e90ff, #87cefa);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  position: fixed;
+  width: 100%;
+  /* height: 70px; */
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+}
+
+.list {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+#toggler,
+label {
+    display: none;
+}
+.humberger{
+    display: none;
+}
+
+label i {
+    color: white;
+}
+
+.equal-image {
+  height: 200px !important;
+  object-fit: cover;
+}
+@media screen and (max-width: 650px) {
+  nav{
+  height: auto;
+  }
+    .menu {
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+  }
+  .humberger {
+    display: block;
+  }
+
+  label {
+    display: inline-flex;
+  }
+
+  #toggler:checked ~ .menu {
+    max-height: 100%;
+  }
+
+  .list {
+    flex-direction: column;
+    align-items: start;
+    padding: 20px;
+  }
+  .welcome-section {
+    height: auto !important;
+  }
+  .main-section{
+   margin-top: 58px !important;
+}
+}
+@media screen and (max-width: 850px) {
+  .welcome-section {
+    height: 50vh !important;
+  }
+}
+.main-section{
+   margin-top: 73px;
+}
+.welcome-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #1e90ff, #87cefa);
+  color: white;
+  text-align: center;
+}
+.welcome {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.explore:hover {
+  background-color: #218838;
+}
+
+.icon-container {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 10px;
+  white-space: nowrap;
+  background-color: skyblue;
+}
+footer a.text-white:hover {
+  color: #0092c8 !important;
+}
+
+/* panchayat page style start */
+.panchayat_section1 {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  
+}
+
+.panchayat_section1 img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+}
+/* panchayat page style end */
+/* School page style start */
+.school_section1 {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  margin-top: 60px;
+}
+
+.school_section1 img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+}
+/* panchayat page style end */
