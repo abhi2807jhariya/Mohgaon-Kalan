@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.v5.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css.map" />
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <!-- Primary Meta Tags -->
+<title>Image Gallery | मोहगांव कलॉ - Village Photo Collection</title>
+<meta name="description" content="मोहगांव कलॉ की सुंदर और ऐतिहासिक तस्वीरों की गैलरी। यहाँ गाँव के मंदिर, स्कूल, त्योहार, प्रकृति और प्रमुख स्थानों की HD images उपलब्ध हैं।">
+<meta name="keywords" content="Mohgaon Kala gallery, mohganv kalan photos, village photo gallery, mohgaon kalan images, mp village images, mohgaon kalan hd photos, ganeshotsav images mohgaon, village gallery website">
+<meta name="author" content="Abhishek Jhariya">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:title" content="मोहगांव कलॉ - Village Image Gallery">
+<meta property="og:description" content="हमारे गाँव मोहगांव कलॉ की सभी महत्वपूर्ण और सुंदर तस्वीरों का संग्रह। HD quality images of village life and culture.">
+<meta property="og:image" content="https://yourwebsite.com/assets/images/Gallary/i_love_mohganv_kalan.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abhi2807jhariya.github.io/Mohgaon-Kalan/gallery.html">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:title" content="मोहगांव कलॉ - Village Photo Gallery">
+<meta name="twitter:description" content="मोहगांव कलॉ गाँव की प्रमुख जगहों और त्योहारों की हाई क्वालिटी तस्वीरें।">
+<meta name="twitter:image" content="https://yourwebsite.com/assets/images/Gallary/i_love_mohganv_kalan.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Image SEO -->
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abhi2807jhariya.github.io/Mohgaon-Kalan/gallery.html">
+
+</head>
+<style>
+    #main-image {
+        width: 100%;
+        /* height: 300px; */
+        object-fit: contain;   /* Image full show */
+        background-color: #f3f3f3;
+        border-radius: 15px;
+        margin-bottom: 15px;
+    }
+
+    .gallery-thumbs {
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+        padding: 10px 0;
+    }
+
+    .gallery-thumbs img {
+        width: 110px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 0.2s;
+        border: 2px solid transparent;
+    }
+
+    .gallery-thumbs img:hover {
+        transform: scale(1.05);
+        border-color: #007bff;
+    }
+</style>
+
+
+<body>
+    <div id="header"></div>
+
+    <div class="main-section Event">
+        <div class="container-fluide latest col-md-12 mb-3 px-2 px-md-5">
+            <div class="row text-center">
+                <div class="col-md-12 mb-3">
+                    <h2 class="mt-4">Gallary</h2>
+                </div>
+            </div>
+            <div class="gallary">
+               <div class="row">
+    <div class="col-md-12">
+        <img id="main-image" src="assets/images/Gallary/welcome_mohganv_kalan.jpg" alt="Main Image">
+
+        <div class="gallery-thumbs">
+            <img src="assets/images/Gallary/welcome_mohganv_kalan.jpg">
+            <img src="assets/images/Gallary/i_love_mohganv_kalan.JPEG">
+            <img src="assets/images/Gallary/independence_day.jpeg">
+            <img src="assets/images/Gallary/khermai_maidir.jpg">
+            <img src="assets/images/Gallary/school.jpeg">
+            <img src="assets/images/Gallary/hospital.png">
+            <img src="assets/images/Gallary/madai.jpeg">
+            <img src="assets/images/Gallary/Shree_ganesh.jpeg">
+            <img src="assets/images/Gallary/Shree_ganesh.jpg">
+            <img src="assets/images/Gallary/dussahra.png">
+            <img src="assets/images/Gallary/ahir_nritya.jpeg">
+        </div>
+    </div>
+</div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="footer"></div>
+    <script src="assets/js/include.js"></script>
+    <script src="assets/js/weather .js"></script>
+    <script src="assets/js/bootstrap.bundle.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+<script>
+    const mainImage = document.getElementById("main-image");
+    const thumbs = document.querySelectorAll(".gallery-thumbs img");
+
+    thumbs.forEach(img => {
+        img.addEventListener("click", () => {
+            mainImage.src = img.src;
+        });
+    });
+</script>
+</body>
+
+</html>
