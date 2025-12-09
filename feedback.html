@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Title -->
+    <title>Feedback Form | मोहगांव कलॉ गाँव की वेबसाइट</title>
+
+    <!-- SEO Description -->
+    <meta name="description" 
+        content="मोहगांव कलॉ गाँव की वेबसाइट के लिए सुझाव दें। यदि आपको कोई जानकारी जोड़नी हो या किसी गलती को सुधारना हो, तो यहाँ अपना फीडबैक साझा करें।">
+
+    <!-- SEO Keywords -->
+    <meta name="keywords" 
+        content="मोहगांव कलॉ, Mohgaon Kalan, feedback form, village website feedback, suggestion form, online feedback, गाँव वेबसाइट सुझाव">
+
+    <!-- Author -->
+    <meta name="author" content="Abhishek Jhariya">
+
+    <!-- Open Graph (Social Media SEO) -->
+    <meta property="og:title" content="Feedback Form | मोहगांव कलॉ">
+    <meta property="og:description" 
+          content="हमारे गाँव के बारे में सुझाव, जानकारी और सुधार साझा करने के लिए इस फॉर्म का उपयोग करें।">
+    <meta property="og:image" content="assets/images/favicon.png">
+    <meta property="og:type" content="website">
+
+    <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.v5.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css.map" />
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+</head>
+
+
+<style>
+    .feed_label {
+        display: block !important;
+        font-weight: 600;
+        margin-bottom: 6px;
+    }
+
+    #feedbackForm input,
+    #feedbackForm textarea {
+        width: 100%;
+        max-width: 500px;
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+</style>
+
+<body>
+    <div id="header"></div>
+
+    <div class="main-section Event px-3 px-lg-5">
+        <div class="container-fluide col-md-12 mb-3 px-2 px-md-5">
+            <div class="row">
+                
+
+                <div class="col-md-12 mb-3">
+                    <h2 class="mb-4 mt-3">Feedback Form</h2>
+
+                    <p class="mt-2">यदि आपको इस वेबसाइट में हमारे गाँव के बारे में कोई जानकारी, राय, सुझाव या कोई सुधार योग्य बात लगे —
+                    चाहे वह नई जानकारी जोड़ने से जुड़ी हो या किसी गलती को ठीक करने से — तो कृपया नीचे अपना संदेश साझा
+                    करें। आपकी जानकारी हमारे लिए महत्वपूर्ण है।</p>
+
+                    <form id="feedbackForm">
+                        <label class="feed_label">Name:</label>
+                        <input type="text" id="name" required>
+
+                        <br><br>
+
+                        <label class="feed_label">Mobile No:</label>
+                        <input type="tel" id="mobile" required>
+
+                        <br><br>
+
+                        <label class="feed_label">Feedback:</label>
+                        <textarea id="feedback" rows="4" required></textarea>
+
+                        <br><br>
+
+                        <button class="btn btn-primary px-4" type="submit">Submit</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <script src="assets/js/include.js"></script>
+    <script src="assets/js/weather.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const form = document.getElementById('feedbackForm');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const mobile = document.getElementById('mobile').value;
+            const feedback = document.getElementById('feedback').value;
+
+            let feedbacks = JSON.parse(localStorage.getItem('feedbacks')) || [];
+
+            feedbacks.push({
+                name,
+                mobile,
+                feedback,
+                date: new Date().toLocaleString()
+            });
+
+            localStorage.setItem('feedbacks', JSON.stringify(feedbacks));
+
+            alert('Feedback submitted successfully!');
+            form.reset();
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.v5.min.css" />
+  <link rel="stylesheet" type="text/css" href="assets/css/main.css.map" />
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+
+  <title>Admin | मोहगांव कलॉ</title>
+</head>
+
+<body>
+  <div id="header"></div>
+
+  <div class="main-section Event px-3 px-lg-5">
+    <div class="container-fluide col-md-12 mb-3 px-2 px-md-5">
+      <div class="row">
+        <div class="col-md-12 mt-3">
+          <h2 class="mb-3">Feedback Records</h2>
+
+          <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+              <tr>
+                <th>Sr.No</th>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>Feedback</th>
+                <th>Date</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="feedbackTableBody">
+              <!-- Dynamic rows here -->
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer"></div>
+
+  <script src="assets/js/include.js"></script>
+  <script src="assets/js/weather.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    function loadFeedback() {
+      let feedbacks = JSON.parse(localStorage.getItem('feedbacks')) || [];
+      const tableBody = document.getElementById('feedbackTableBody');
+      tableBody.innerHTML = "";
+
+      if (feedbacks.length === 0) {
+        tableBody.innerHTML = `<tr>
+                    <td colspan="6" class="text-center">No feedback found</td>
+                </tr>`;
+        return;
+      }
+
+      feedbacks.forEach((fb, index) => {
+        const row = `<tr>
+                    <td>${index + 1}</td>
+                    <td>${fb.name}</td>
+                    <td>${fb.mobile}</td>
+                    <td>${fb.feedback}</td>
+                    <td>${fb.date}</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm" onclick="deleteFeedback(${index})">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>`;
+
+        tableBody.innerHTML += row;
+      });
+    }
+
+    function deleteFeedback(index) {
+      let feedbacks = JSON.parse(localStorage.getItem('feedbacks')) || [];
+      if (confirm("Are you sure you want to delete this feedback?")) {
+        feedbacks.splice(index, 1);
+        localStorage.setItem('feedbacks', JSON.stringify(feedbacks));
+        loadFeedback();
+      }
+    }
+
+    // Load table when page opens
+    loadFeedback();
+  </script>
+
+</body>
+
+</html>
