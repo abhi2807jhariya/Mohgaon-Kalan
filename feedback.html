@@ -4,18 +4,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>Feedback Form | मोहगांव कलॉ गाँव की वेबसाइट</title>
 
-    <meta name="description" 
-        content="मोहगांव कलॉ गाँव की वेबसाइट के लिए सुझाव दें। यदि आपको कोई जानकारी जोड़नी हो या किसी गलती को सुधारना हो, तो यहाँ अपना फीडबैक साझा करें।">
-    <meta name="keywords" 
-        content="मोहगांव कलॉ, Mohgaon Kalan, feedback form, village website feedback, suggestion form, online feedback, गाँव वेबसाइट सुझाव">
+    <meta name="description" content="मोहगांव कलॉ गाँव की वेबसाइट के लिए सुझाव दें। यदि आपको कोई जानकारी जोड़नी हो या किसी गलती को सुधारना हो, तो यहाँ अपना फीडबैक साझा करें।">
+    <meta name="keywords" content="मोहगांव कलॉ, Mohgaon Kalan, feedback form, village website feedback, suggestion form, online feedback, गाँव वेबसाइट सुझाव">
     <meta name="author" content="Abhishek Jhariya">
 
     <meta property="og:title" content="Feedback Form | मोहगांव कलॉ">
-    <meta property="og:description" 
-          content="हमारे गाँव के बारे में सुझाव, जानकारी और सुधार साझा करने के लिए इस फॉर्म का उपयोग करें।">
+    <meta property="og:description" content="हमारे गाँव के बारे में सुझाव, जानकारी और सुधार साझा करने के लिए इस फॉर्म का उपयोग करें।">
     <meta property="og:image" content="assets/images/favicon.png">
     <meta property="og:type" content="website">
 
@@ -93,7 +89,7 @@
     <script src="assets/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        const API_URL = "https://script.google.com/macros/s/AKfycbyR2Gk75vJUn-zd_Nykyg2c0WKKr2gUq4py6fUXo4wX67u-A8ahMzPhyDR7YdicucLl/exec";
+        const API_URL = "https://script.google.com/macros/s/AKfycbzz-ShnjFMOEOVkoX3tjCEvapl3B-XKh-HJlSq9C2uNttmI8xtZ6xMbCdy11G_049E/exec";
         const form = document.getElementById('feedbackForm');
         const msg = document.getElementById('msg');
 
@@ -109,7 +105,7 @@
             fetch(API_URL, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ Name: name, Mobile: mobile, Feedback: feedback })
+                body: JSON.stringify({ name: name, mobile: mobile, feedback: feedback }) // lowercase keys
             })
             .then(res => res.json())
             .then(res => {
