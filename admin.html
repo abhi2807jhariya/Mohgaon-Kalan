@@ -13,29 +13,20 @@
   <link rel="icon" type="image/png" href="assets/images/favicon.png" />
   <title>Admin | मोहगांव कलॉ</title>
 
+      <!-- Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.v5.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+
+
   <style>
+    /* Minimal inline CSS sirf table ke liye */
     .table th, .table td {
       vertical-align: middle;
     }
-
-        .feed_label {
-            display: block !important;
-            font-weight: 600;
-            margin-bottom: 6px;
-        }
-        #feedbackForm input,
-        #feedbackForm textarea {
-            width: 100%;
-            max-width: 500px;
-            padding: 8px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-        #msg {
-            font-weight: 600;
-            margin-left: 10px;
-        }
-   
   </style>
 </head>
 
@@ -72,7 +63,6 @@
 const API_URL = "https://script.google.com/macros/s/AKfycbzz-ShnjFMOEOVkoX3tjCEvapl3B-XKh-HJlSq9C2uNttmI8xtZ6xMbCdy11G_049E/exec";
 const tableBody = document.querySelector('#adminTable tbody');
 
-// Load feedbacks from Sheet
 async function loadFeedbacks() {
     try {
         const res = await fetch(API_URL);
@@ -80,7 +70,8 @@ async function loadFeedbacks() {
 
         tableBody.innerHTML = "";
         data.forEach((item) => {
-            const row = `<tr>
+            const row = document.createElement("tr");
+            row.innerHTML = `
                 <td>${item["Sr No"]}</td>
                 <td>${item.name}</td>
                 <td>${item.mobile}</td>
@@ -90,8 +81,8 @@ async function loadFeedbacks() {
                         <i class="fa fa-trash"></i> Delete
                     </button>
                 </td>
-            </tr>`;
-            tableBody.innerHTML += row;
+            `;
+            tableBody.appendChild(row);
         });
     } catch (err) {
         console.error("Error loading feedbacks:", err);
@@ -99,7 +90,6 @@ async function loadFeedbacks() {
     }
 }
 
-// Delete feedback
 async function deleteFeedback(srNo) {
     if(!confirm("क्या आप वाकई इस feedback को हटाना चाहते हैं?")) return;
 
@@ -117,7 +107,6 @@ async function deleteFeedback(srNo) {
     }
 }
 
-// Load feedbacks on page load
 loadFeedbacks();
 </script>
 
