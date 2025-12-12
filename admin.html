@@ -5,26 +5,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Stylesheets -->
   <link rel="stylesheet" type="text/css" href="style.css" />
   <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.v5.min.css" />
+  <link rel="stylesheet" type="text/css" href="assets/css/main.css.map" />
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    crossorigin="anonymous" />
 
   <link rel="icon" type="image/png" href="assets/images/favicon.png" />
   <title>Admin | मोहगांव कलॉ</title>
 
-      <!-- Stylesheets -->
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.v5.min.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <link rel="icon" type="image/png" href="assets/images/favicon.png" />
-
-
   <style>
-    /* Minimal inline CSS sirf table ke liye */
-    .table th, .table td {
+    .table th,
+    .table td {
       vertical-align: middle;
     }
   </style>
@@ -37,18 +31,20 @@
     <div class="container-fluid col-md-12 mb-3 px-2 px-md-5">
       <div class="container mt-5">
         <h2>Feedback Records (Admin)</h2>
-        <table id="adminTable" class="table table-bordered table-striped mt-3">
-          <thead class="table-dark">
-            <tr>
-              <th>Sr No</th>
-              <th>Name</th>
-              <th>Mobile</th>
-              <th>Feedback</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
+        <div class="table-responsive">
+          <table id="adminTable" class="table table-bordered table-striped mt-3">
+            <thead class="table-dark">
+              <tr>
+                <th>Sr No</th>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>Feedback</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
@@ -59,19 +55,28 @@
   <script src="assets/js/weather.js"></script>
   <script src="assets/js/bootstrap.bundle.min.js"></script>
 
-<script>
-const API_URL = "https://script.google.com/macros/s/AKfycbzz-ShnjFMOEOVkoX3tjCEvapl3B-XKh-HJlSq9C2uNttmI8xtZ6xMbCdy11G_049E/exec";
-const tableBody = document.querySelector('#adminTable tbody');
+  <script>
+    // --------------------------------------------
+    //  WORKING API URL (Tumhara Apps Script URL)
+    // --------------------------------------------
+    const API_URL = "https://script.google.com/macros/s/AKfycbzz-ShnjFMOEOVkoX3tjCEvapl3B-XKh-HJlSq9C2uNttmI8xtZ6xMbCdy11G_049E/exec";
 
-async function loadFeedbacks() {
-    try {
+    const tableBody = document.querySelector('#adminTable tbody');
+
+    // --------------------------------------------
+    //  Load Feedback Records (GET)
+    // --------------------------------------------
+    async function loadFeedbacks() {
+      try {
         const res = await fetch(API_URL);
         const data = await res.json();
 
         tableBody.innerHTML = "";
+
         data.forEach((item) => {
-            const row = document.createElement("tr");
-            row.innerHTML = `
+          const row = document.createElement("tr");
+
+          row.innerHTML = `
                 <td>${item["Sr No"]}</td>
                 <td>${item.name}</td>
                 <td>${item.mobile}</td>
@@ -82,33 +87,47 @@ async function loadFeedbacks() {
                     </button>
                 </td>
             `;
-            tableBody.appendChild(row);
+
+          tableBody.appendChild(row);
         });
-    } catch (err) {
-        console.error("Error loading feedbacks:", err);
-        alert("Feedbacks load nahi ho paaye. Please check API.");
+
+      } catch (err) {
+        console.error("Error:", err);
+        alert("Feedback load failed. Pelese check API URL.");
+      }
     }
-}
 
-async function deleteFeedback(srNo) {
-    if(!confirm("क्या आप वाकई इस feedback को हटाना चाहते हैं?")) return;
+    // --------------------------------------------
+    //  Delete Feedback (DELETE)
+    // --------------------------------------------
+    async function deleteFeedback(srNo) {
+      if (!confirm("Are you want to sure delete this feedback?")) return;
 
-    try {
-        const res = await fetch(`${API_URL}?srNo=${srNo}`, { method: "DELETE" });
+      try {
+        const res = await fetch(`${API_URL}?srNo=${srNo}`, {
+          method: "DELETE"
+        });
+
         const result = await res.json();
-        if(result.status === "success") {
-            loadFeedbacks();
-        } else {
-            alert("Error deleting feedback: " + (result.message || "Unknown error"));
-        }
-    } catch(err) {
-        console.error("Error deleting feedback:", err);
-        alert("Error deleting feedback. Check console.");
-    }
-}
 
-loadFeedbacks();
-</script>
+        if (result.status === "success") {
+          loadFeedbacks();
+        } else {
+          alert("Delete error: " + result.message);
+        }
+
+      } catch (err) {
+        console.error("Delete Error:", err);
+        alert("Feedback delete नहीं हुआ, API error.");
+      }
+    }
+
+    // --------------------------------------------
+    //  Load feedback when page opens
+    // --------------------------------------------
+    loadFeedbacks();
+  </script>
 
 </body>
+
 </html>
