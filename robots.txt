@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://abhi2807jhariya.github.io/Mohgaon-Kalan/sitemap.xml
