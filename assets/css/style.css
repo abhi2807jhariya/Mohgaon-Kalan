@@ -106,7 +106,7 @@ label i {
   margin: 0;
   padding: 0;
   /* background: linear-gradient(to bottom, #1e90ff, #87cefa); */
-    background-image: url("/assets/images/place/home_hero.webp"); /* apni image ka path */
+    background-image: url("https://abhi2807jhariya.github.io/Mohgaon-Kalan//assets/images/place/home_hero.webp"); /* apni image ka path */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
