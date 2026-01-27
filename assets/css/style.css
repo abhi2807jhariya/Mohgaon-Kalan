@@ -105,13 +105,26 @@ label i {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(to bottom, #1e90ff, #87cefa);
+  /* background: linear-gradient(to bottom, #1e90ff, #87cefa); */
+    background-image: url("/assets/images/place/home_hero.webp"); /* apni image ka path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  position: relative;
   color: white;
   text-align: center;
 }
 .welcome {
   font-size: 3rem;
   margin-bottom: 20px;
+  font-weight: 900;
+}
+.home_subheading{
+  font-size: 25px;
+  font-weight: 600;
 }
 
 .explore:hover {
