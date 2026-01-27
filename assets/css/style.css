@@ -121,10 +121,12 @@ label i {
   font-size: 3rem;
   margin-bottom: 20px;
   font-weight: 900;
+  color: #59FF00;
 }
 .home_subheading{
   font-size: 25px;
   font-weight: 600;
+  color: #59FF00;
 }
 
 .explore:hover {
